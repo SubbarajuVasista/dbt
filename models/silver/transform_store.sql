@@ -6,11 +6,11 @@
             "materialized": "table",
             "transient": true,
             "alias": "Walmart",
-            "pre_hook": {{ref(
+            "pre_hook": ref(
                 "copy_csv_into_walmart_stores",
                 csv_file="stores.csv",
                 column_mappings=walmart_stores_mappings,
-            )}},
+            ),
             "schema": "SILVER",
         }
     )
