@@ -4,7 +4,7 @@
     "materialized": 'table',
     "transient": true,
     "alias": 'Walmart',
-    "pre_hook": dbt_macro('copy_csv_into_walmart_dept', csv_file='department.csv', column_mappings=walmart_dept_mappings),
+    "pre_hook": {{ref('copy_csv_into_walmart_dept', csv_file='department.csv', column_mappings=walmart_dept_mappings)}},
     "schema": 'SILVER'
 }) }}
 
