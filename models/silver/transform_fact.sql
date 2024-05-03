@@ -1,9 +1,12 @@
-{{ config({ "materialized":'table',
- "transient":true,
- "alias":'Walmart',
- "pre_hook": macros_copy_csv('Walmart_fact'),
- "schema": 'SILVER'
-})}}
+{% set walmart_fact_mappings = '"Store", "Date_Id", "Temperature", "Fuel_Price", "MarkDown1", "MarkDown2", "MarkDown3", "MarkDown4", "MarkDown5", "Cpi", "Un_Employment", "Is_Holiday"' %}
+
+{{ config({
+    "materialized": 'table',
+    "transient": true,
+    "alias": 'Walmart',
+    "pre_hook": dbt_macro('copy_csv_into_walmart_fact', csv_file='fact.csv', column_mappings=walmart_fact_mappings),
+    "schema": 'SILVER'
+}) }}
 
 WITH transform_fact AS(
 SELECT 
