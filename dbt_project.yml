@@ -5,6 +5,7 @@
 name: 'chinna_walmart_project'
 version: '1.0.0'
 config-version: 2
+require-dbt-version: ">=1.7.13"
 
 # This setting configures which "profile" dbt uses for this project.
 profile: 'default'
