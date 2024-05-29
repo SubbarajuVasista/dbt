@@ -1,14 +1,15 @@
-{{ config({ "materialized":'table',
- "transient":true,
+{{ config({
+ "materialized":'table',
  "alias":'Walmart_Dept',
- "pre_hook": macros_copy_csv('Wal_Dept','s3://snowflake-data-bucket01/data/department.csv'),
- "schema": 'BRONZE'
+ "schema": 'Silver'
 })}}
 
 select
-    cast(null as string) as Store,
-    cast(null as string) as Dept,
-    cast(null as Date) as Date1,
-    cast(null as number) as Weekly_Sales,
-    cast(null as Bool) as IsHoliday
-where false
+   store_id,
+   dept_id,
+   dept_date,
+   weekly_sales,
+   is_holiday,
+   CURRENT_TIMESTAMP AS insert_date,
+   CURRENT_TIMESTAMP AS update_date
+  FROM {{ source('chinna_walmart_project', 'wal_dept') }}
