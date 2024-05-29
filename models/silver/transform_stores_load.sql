@@ -9,6 +9,6 @@ select
    type,
    size,
    CURRENT_TIMESTAMP AS insert_date,
-   CURRENT_TIMESTAMP AS update_date,
-   from {{'chinna_walmart_project', 'wal_stores'}}
+   CURRENT_TIMESTAMP AS update_date
+  FROM {{ source('chinna_walmart_project', 'wal_stores') }};
 

@@ -1,11 +1,10 @@
 version: 2
 
 sources:
-  -name: chinna_walmart_project
-  database: WALMART
-  schema: BRONZE
-  tables:
-    - name: wal_stores
-    - name: wal_dept
-    - name: wal_fact
-    
+  - name: chinna_walmart_project
+    database: WALMART
+    schema: BRONZE
+    tables:
+      - name: wal_stores
+      - name: wal_dept
+      - name: wal_fact
