@@ -1,12 +1,14 @@
-{{ config({ "materialized":'table',
- "transient":true,
+{{ config({
+ "materialized":'table',
  "alias":'Walmart_Stores',
- "pre_hook": macros_copy_csv('Wal_Stores','s3://snowflake-data-bucket01/data/stores.csv'),
- "schema": 'BRONZE'
+ "schema": 'Silver'
 })}}
 
 select
-    cast(null as string) as Store,
-    cast(null as string) as Type,
-    cast(null as number) as Size
-where false
+   store_id,
+   type,
+   size,
+   CURRENT_TIMESTAMP AS insert_date,
+   CURRENT_TIMESTAMP AS update_date,
+   from {{'chinna_walmart_project', 'wal_stores'}}
+
