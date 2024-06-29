@@ -47,9 +47,9 @@ models:
   chinna_walmart_project:
     # Applies to all files under models/example/
     silver:
-      schema:
-      materialized: table
+      +schema: SILVER
+      +materialized: incremental
     gold:
-      schema:
-      materialized: view
+      +schema: GOLD
+      +materialized: incremental
 
