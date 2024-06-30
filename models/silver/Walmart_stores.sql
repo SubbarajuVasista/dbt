@@ -1,5 +1,6 @@
 {{ config(
-    materialized='incremental',
+    materialized = 'incremental',
+    incremental_strategy = 'append',
     unique_key=['store_id'],
     merge_update_columns=['type','size']
 ) }}
