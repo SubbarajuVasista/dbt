@@ -46,10 +46,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   chinna_walmart_project:
     # Applies to all files under models/example/
-    silver:
-      +schema: SILVER
-      +materialized: incremental
-    gold:
-      +schema: GOLD
-      +materialized: incremental
+    staging:
+      materialized: incremental
+    transformations:
+      materialized: incremental
+    fact:
+      materialized: incremental
+
+
 
