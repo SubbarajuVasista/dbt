@@ -1,6 +1,8 @@
 {{ config(
-    materialized='incremental',
-    unique_key='store_id'
+    materialized            = 'incremental',
+    unique_key              = 'store_id',
+    merge_update_columns    = ['store_id', 'type'],
+    schema                  = 'BRONZE'
 ) }}
 
 WITH source AS (

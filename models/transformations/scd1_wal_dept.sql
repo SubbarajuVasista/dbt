@@ -1,6 +1,8 @@
 {{ config(
     materialized='incremental',
-    unique_key=['store_id', 'dept_id']
+    unique_key=['store_id', 'dept_id'],
+    schema='SILVER',
+    alias= 'WALMART_DEPT'
 ) }}
 
 WITH latest_data AS (
